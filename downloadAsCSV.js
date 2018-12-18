@@ -1,3 +1,12 @@
+function changeToFloat(str){
+	if(/\D/.test(str.replace(/\./g, '')) === false){
+		return parseFloat(str);
+	}else{
+		return str;
+	}
+	
+}
+
 function convertTable2Array() {
 	sel = window.getSelection();
 	if (sel.rangeCount && sel.getRangeAt) {
@@ -10,7 +19,8 @@ function convertTable2Array() {
 
 	Array.from(range.commonAncestorContainer.children)
 	.forEach(itm=>{
-		arrayCont.push(JSON.parse('["'+itm.innerText.replace(/,/g, '').replace(/\t/g, '","')+'"]'))
+		var cleanText = changeToFloat(itm.innerText.replace(/,/g, ''));
+		arrayCont.push(JSON.parse('["'+cleanText.replace(/\t/g, '","')+'"]'))
 	});
 
 	return arrayCont;
