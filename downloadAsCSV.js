@@ -14,12 +14,12 @@ function convertTable2Array() {
 	}
 	var arrayCont = Array.from(range.commonAncestorContainer.previousElementSibling.children)
 .map(itm=>{
-		return JSON.parse('["'+itm.innerText.replace(/,/g, '').replace(/\n/g, '').replace(/\t/g, '","')+'"]')
+		return JSON.parse('["'+itm.innerText.replace(/,/g, '').replace(/"/g, '').replace(/\n/g, '').replace(/\t/g, '","')+'"]')
 	});
 
 	Array.from(range.commonAncestorContainer.children)
 	.forEach(itm=>{
-		var cleanText = changeToFloat(itm.innerText.replace(/,/g, ''));
+		var cleanText = changeToFloat(itm.innerText.replace(/,/g, '').replace(/"/g, ''));
 		arrayCont.push(JSON.parse('["'+cleanText.replace(/\t/g, '","')+'"]'))
 	});
 
