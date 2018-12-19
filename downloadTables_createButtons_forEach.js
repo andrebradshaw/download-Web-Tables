@@ -46,7 +46,7 @@ var theads = document.getElementsByTagName('thead');
 for(i=0; i<theads.length; i++){
 	theads[i].parentElement.setAttribute('id', 'dl_table_'+i);
 	var tableDl_btn = document.createElement("button");
-	document.getElementById('dl_table_'+i).insertBefore(tableDl_btn, theads[i])
+	document.getElementById('dl_table_'+i).insertBefore(tableDl_btn, theads[i]);
 	tableDl_btn.setAttribute("id", "tableDl_btn_"+i);
 	document.getElementById("tableDl_btn_"+i).innerText = "download table";
 	tableDl_btn.style.background = "Coral";
