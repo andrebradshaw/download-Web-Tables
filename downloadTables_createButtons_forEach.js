@@ -1,3 +1,4 @@
+
 function changeToFloat(str){
 	if(/\D/.test(str.replace(/\./g, '')) === false){
 		return parseFloat(str);
@@ -100,11 +101,11 @@ for(i=0; i<theads.length; i++){
 var tables = document.getElementsByTagName('table');
 
 for(t=0; t<tables.length; t++){
-	if(tables[t].getElementsByTagName('thead')[0] == undefined && tables[t].getElementsByTagName('tbody')[0] != undefined){
+	if(tables[t].getElementsByTagName('thead')[0] == undefined && tables[t].getElementsByTagName('tbody')[0] != undefined && tables[t].getElementsByTagName('tbody')[0].children.length >4){
 
 		tables[t].getElementsByTagName('tbody')[0].setAttribute('id', 'dl_tbod_'+t);
 		var tbodDl_btn = document.createElement("button");
-		document.getElementById('dl_tbod_'+t).appendChild(tbodDl_btn);
+		document.getElementById('dl_tbod_'+t).parentElement.insertBefore(tbodDl_btn, tables[t].firstElementChild);
 		tbodDl_btn.setAttribute("id", "tbodDl_btn_"+t);
 		document.getElementById("tbodDl_btn_"+t).innerText = "Download This Table";
 		tbodDl_btn.style.background = "darkcyan";
@@ -122,5 +123,4 @@ for(t=0; t<tables.length; t++){
 		document.getElementById("tbodDl_btn_"+t).addEventListener("mouseout", out);	
 	}
 }
-
 
